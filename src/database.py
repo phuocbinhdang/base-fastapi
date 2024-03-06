@@ -2,7 +2,9 @@ from contextlib import contextmanager
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session, declarative_base
 
-db_engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3306/fastapi")
+from src import config
+
+db_engine = create_engine(config.DB_URL)
 
 session_factory = sessionmaker(
     autocommit=False,
